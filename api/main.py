@@ -11,11 +11,14 @@ app = FastAPI(title="HR Attrition Prediction API")
 # Load model + metadata ONCE at startup
 model, model_metadata = load_model_with_metadata()
 
-MODEL_URI = "models:/hr_attrition_model@Production"
 
-app.get("/")
+@app.get("/")
 def home():
-    return JSONResponse(status_code=200, content={"message": "Welcome to HR-Attrition backend API"})
+    return JSONResponse(
+        status_code=200,
+        content={"message": "Welcome to HR-Attrition backend API"}
+    )
+
 
 @app.get("/health")
 def health():
@@ -29,15 +32,14 @@ def health():
         }
     }
 
+
 @app.post("/predict")
 def predict(features: EmployeeFeatures):
     timer = LatencyTimer()
     timer.start()
 
-    # Convert input to DataFrame
     input_df = pd.DataFrame([features.model_dump()])
 
-    # Run inference
     prediction = model.predict(input_df)[0]
     probability = model.predict_proba(input_df)[0][1]
 
