@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements/api.txt
 
 # Copy application code
 COPY api ./api
-COPY src ./src
+
 
 EXPOSE 8000
 
