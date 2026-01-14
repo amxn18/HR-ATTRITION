@@ -1,10 +1,7 @@
-# ============================================================
 # HR ATTRITION ML SYSTEM — END-TO-END MLOPS PROJECT
-# ============================================================
 
-# ------------------------------------------------------------
-# PROJECT OVERVIEW
-# ------------------------------------------------------------
+## PROJECT OVERVIEW
+
 This project implements a full production-style Machine Learning system
 to predict employee attrition using the IBM HR Analytics dataset.
 
@@ -22,18 +19,18 @@ an end-to-end ML system covering:
 
 This mirrors how real ML systems are built in industry.
 
-# ------------------------------------------------------------
-# PROBLEM STATEMENT
-# ------------------------------------------------------------
+
+## PROBLEM STATEMENT
+
 Employee attrition is a critical business problem.
 The task is to predict whether an employee is likely to leave the company
 based on demographic, role-based, compensation, and satisfaction features.
 
 This is formulated as a binary classification problem.
 
-# ------------------------------------------------------------
-# DATASET
-# ------------------------------------------------------------
+
+## DATASET
+
 Dataset: IBM HR Analytics Attrition Dataset (Kaggle)
 
 Target Variable:
@@ -53,18 +50,18 @@ All features were analyzed for:
 • distribution
 • suitability for encoding and scaling
 
-# ------------------------------------------------------------
-# STAGE 1 — DATA UNDERSTANDING & FEATURE DESIGN
-# ------------------------------------------------------------
+
+## STAGE 1 — DATA UNDERSTANDING & FEATURE DESIGN
+
 • Clear separation of numerical and categorical features
 • Validation of feature ranges and constraints
 • Explicit handling of ordinal vs nominal variables
 • Schema-first thinking to ensure consistency across:
   training → inference → UI → database
 
-# ------------------------------------------------------------
-# STAGE 2 — PREPROCESSING PIPELINES
-# ------------------------------------------------------------
+
+## STAGE 2 — PREPROCESSING PIPELINES
+
 A production-ready preprocessing pipeline was built using:
 • Numerical pipeline:
   – median imputation
@@ -77,9 +74,9 @@ A production-ready preprocessing pipeline was built using:
 The preprocessing pipeline is bundled with the model to guarantee
 training-serving parity.
 
-# ------------------------------------------------------------
-# STAGE 3 — MODEL EXPERIMENTATION
-# ------------------------------------------------------------
+
+## STAGE 3 — MODEL EXPERIMENTATION
+
 Multiple classification models were trained and evaluated under a
 single MLflow experiment:
 
@@ -97,9 +94,9 @@ Each model was evaluated using:
 Emphasis was placed on understanding metric trade-offs,
 especially under class imbalance.
 
-# ------------------------------------------------------------
-# STAGE 4 — EXPERIMENT TRACKING (MLFLOW)
-# ------------------------------------------------------------
+
+## STAGE 4 — EXPERIMENT TRACKING (MLFLOW)
+
 MLflow was used to track:
 • parameters
 • metrics
@@ -111,9 +108,9 @@ human-driven comparison and selection.
 
 This allows reproducibility and transparent decision-making.
 
-# ------------------------------------------------------------
-# STAGE 5 — MODEL REGISTRY & VERSIONING
-# ------------------------------------------------------------
+
+## STAGE 5 — MODEL REGISTRY & VERSIONING
+
 The selected model was registered in the MLflow Model Registry.
 
 Key practices:
@@ -125,9 +122,9 @@ Key practices:
 The backend always loads the model via registry alias,
 making model upgrades non-breaking.
 
-# ------------------------------------------------------------
-# STAGE 6 — BACKEND INFERENCE SERVICE
-# ------------------------------------------------------------
+
+## STAGE 6 — BACKEND INFERENCE SERVICE
+
 A FastAPI backend was built to serve predictions.
 
 Key design principles:
@@ -141,9 +138,9 @@ The backend exposes:
 • /health → service & model status
 • /predict → inference endpoint
 
-# ------------------------------------------------------------
-# STAGE 7 — DATABASE LOGGING (POSTGRESQL)
-# ------------------------------------------------------------
+
+## STAGE 7 — DATABASE LOGGING (POSTGRESQL)
+
 A PostgreSQL database is used to log prediction metadata.
 
 Each inference logs:
@@ -161,9 +158,9 @@ SQLAlchemy ORM is used for:
 
 This enables observability and post-deployment analysis.
 
-# ------------------------------------------------------------
-# STAGE 8 — FRONTEND (STREAMLIT)
-# ------------------------------------------------------------
+
+## STAGE 8 — FRONTEND (STREAMLIT)
+
 A Streamlit UI was built to act as a client to the backend.
 
 Design goals:
@@ -178,9 +175,9 @@ The UI:
 • displays prediction and confidence
 • handles validation and errors gracefully
 
-# ------------------------------------------------------------
-# STAGE 9 — CONTAINERIZATION
-# ------------------------------------------------------------
+
+## STAGE 9 — CONTAINERIZATION
+
 The system is fully containerized using Docker.
 
 Services:
@@ -194,9 +191,9 @@ Principles followed:
 • Runtime configuration via environment variables
 • Identical behavior across environments
 
-# ------------------------------------------------------------
-# STAGE 10 — CI/CD PIPELINE
-# ------------------------------------------------------------
+
+## STAGE 10 — CI/CD PIPELINE
+
 A GitHub Actions pipeline automates:
 
 • Docker image builds
@@ -206,9 +203,9 @@ A GitHub Actions pipeline automates:
 
 This enables reproducible, automated delivery without manual steps.
 
-# ------------------------------------------------------------
-# DEPLOYMENT STATUS
-# ------------------------------------------------------------
+
+## DEPLOYMENT STATUS
+
 • Backend, frontend, and database are cloud-ready
 • Managed PostgreSQL tested on cloud provider
 • Docker-based deployment validated
@@ -218,9 +215,9 @@ Final deployment was intentionally paused after validation
 due to free-tier limitations, while preserving full
 production-grade architecture.
 
-# ------------------------------------------------------------
-# KEY ENGINEERING TAKEAWAYS
-# ------------------------------------------------------------
+
+## KEY ENGINEERING TAKEAWAYS
+
 • Training and serving are fully decoupled
 • Model upgrades do not require code changes
 • Schema validation prevents silent data issues
@@ -228,9 +225,9 @@ production-grade architecture.
 • Environment-agnostic configuration is enforced
 • The system mirrors real industry ML stacks
 
-# ------------------------------------------------------------
-# TECHNOLOGIES USED
-# ------------------------------------------------------------
+
+## TECHNOLOGIES USED
+
 • Python
 • Scikit-learn
 • MLflow
