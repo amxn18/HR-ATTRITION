@@ -17,7 +17,6 @@ def load_model_with_metadata():
     """
     client = MlflowClient()
 
-    # Resolve alias -> version
     model_version = client.get_model_version_by_alias(
         name=MODEL_NAME,
         alias=MODEL_ALIAS
