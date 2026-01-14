@@ -48,5 +48,5 @@ def predict(features: EmployeeFeatures):
     return {
         "attrition_prediction": int(prediction),
         "attrition_probability": round(float(probability), 4),
-        "latency_ms": latency_ms
+        "latency_ms" : latency_ms
     }
