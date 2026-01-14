@@ -2,3 +2,5 @@
 mlflow.db
 mlruns
 __pycache__
+.env
+.env.*
