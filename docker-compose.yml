@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: hr_postgres
+    environment:
+      POSTGRES_DB: hrAttritionDB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    container_name: hr_api
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: hrAttritionDB
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  ui:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.ui
+    container_name: hr_ui
+    environment:
+      API_URL: http://api:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:

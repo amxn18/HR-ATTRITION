@@ -18,7 +18,7 @@ with st.form("attrition_form"):
     
     gender = st.selectbox("Gender", ["Male", "Female"])
     
-    marital_status = st.selectbox("Marital Status", ["Single", "Married", "Divorce"])
+    marital_status = st.selectbox("Marital Status", ["Single", "Married", "Divorced"])
     
     department = st.selectbox("Department", ["Sales", "Research & Development", "Human Resources"])
 
